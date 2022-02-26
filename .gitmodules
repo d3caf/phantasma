@@ -1,3 +1,0 @@
-[submodule "lib/reddit"]
-	path = lib/reddit
-	url = git@github.com:d3caf/reddex.git
