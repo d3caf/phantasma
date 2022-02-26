@@ -1,0 +1,24 @@
+<div>
+  <h2><%= @title %></h2>
+
+  <.form
+    let={f}
+    for={@changeset}
+    id="link-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+  
+    <%= label f, :host %>
+    <%= text_input f, :host %>
+    <%= error_tag f, :host %>
+  
+    <%= label f, :url %>
+    <%= text_input f, :url %>
+    <%= error_tag f, :url %>
+  
+    <div>
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </div>
+  </.form>
+</div>

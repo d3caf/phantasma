@@ -1,0 +1,24 @@
+<div>
+  <h2><%= @title %></h2>
+
+  <.form
+    let={f}
+    for={@changeset}
+    id="submission-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+  
+    <%= label f, :subs %>
+    <%= multiple_select f, :subs, ["Option 1": "option1", "Option 2": "option2"] %>
+    <%= error_tag f, :subs %>
+  
+    <%= label f, :status %>
+    <%= select f, :status, Ecto.Enum.values(Phantasma.Content.Submission, :status), prompt: "Choose a value" %>
+    <%= error_tag f, :status %>
+  
+    <div>
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </div>
+  </.form>
+</div>

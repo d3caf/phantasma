@@ -1,0 +1,1 @@
+call "%~dp0\phantasma" eval Phantasma.Release.migrate

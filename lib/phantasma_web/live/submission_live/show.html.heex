@@ -1,0 +1,31 @@
+<h1>Show Submission</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.submission_show_path(@socket, :show, @submission)}>
+    <.live_component
+      module={PhantasmaWeb.SubmissionLive.FormComponent}
+      id={@submission.id}
+      title={@page_title}
+      action={@live_action}
+      submission={@submission}
+      return_to={Routes.submission_show_path(@socket, :show, @submission)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Subs:</strong>
+    <%= @submission.subs %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @submission.status %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.submission_show_path(@socket, :edit, @submission), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.submission_index_path(@socket, :index) %></span>
