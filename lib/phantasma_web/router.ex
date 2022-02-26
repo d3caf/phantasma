@@ -27,7 +27,7 @@ defmodule PhantasmaWeb.Router do
   end
 
   scope "/manage", PhantasmaWeb do
-    pipe_through :browser
+    pipe_through [:browser, :authenticated]
 
     live_session :default, on_mount: PhantasmaWeb.Hooks.OnMount do
       # Posts
@@ -98,13 +98,15 @@ defmodule PhantasmaWeb.Router do
     end
   end
 
-  def auth(conn, _opts) do
+  def auth(%{request_path: return_to, query_params: query} = conn, _opts) do
+    redirect = "/?#{query |> Map.put("return_to", return_to) |> URI.encode_query()}"
+
     if get_session(conn, :reddit_access_token) do
       conn
     else
       conn
-      |> put_status(404)
-      |> redirect(to: "/")
+      |> put_flash(:error, "You need to authorize with reddit first!")
+      |> redirect(to: redirect)
     end
   end
 end

@@ -5,8 +5,17 @@ defmodule PhantasmaWeb.Components.SubmissionsTable do
     ~H"""
     <div class="table-container">
       <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
         <tbody>
-          <%= for %{score: score, thumbnail: thumbnail, title: title, subreddit: subreddit, preview: previews} <- assigns.submissions do %>
+          <%= for %{score: score, thumbnail: thumbnail, title: title, subreddit: subreddit, preview: previews, over_18: nsfw} = submission <- assigns.submissions do %>
+          <% IO.inspect(submission, limit: :infinity) %>
           <tr>
             <td class="is-v-center" style="white-space: nowrap;">
               <h4 class="title is-4 has-text-primary-dark" title={"#{score} upvotes"}>
@@ -22,7 +31,11 @@ defmodule PhantasmaWeb.Components.SubmissionsTable do
             </td>
 
             <td class="is-v-center">
-              <strong><%= title %></strong> <small><%= subreddit %></small>
+              <strong><%= title %></strong>
+              <%= if nsfw, do: ~H|<span class="tag is-danger is-light">🔥 NSFW</span>| %>
+            </td>
+            <td class="is-v-center">
+              <small><%= subreddit %></small>
             </td>
           </tr>
           <% end %>
