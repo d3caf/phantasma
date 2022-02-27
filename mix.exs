@@ -33,7 +33,7 @@ defmodule Phantasma.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:local_dependency, path: "~/c/breddit"},
+      {:breddit, path: "~/c/breddit"},
       {:oauth2, "~> 2.0"},
       {:phoenix, "~> 1.6.6"},
       {:phoenix_ecto, "~> 4.4"},

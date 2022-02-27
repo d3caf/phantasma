@@ -30,7 +30,7 @@ config :phantasma, PhantasmaWeb.Endpoint,
 
 config :oauth2, debug: true
 
-config :reddit,
+config :breddit,
   oauth: [
     client_id: System.get_env("REDDIT_CLIENT_ID") || raise("Reddit client ID is not set!"),
     client_secret: System.get_env("REDDIT_CLIENT_SECRET") || raise("Reddit client secret is not set!"),
