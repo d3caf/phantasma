@@ -4,7 +4,7 @@ defmodule PhantasmaWeb.SubmissionLive.Index do
   alias Phantasma.Content
   alias Phantasma.Content.Submission
   alias PhantasmaWeb.Components.SubmissionsTable, as: SubmissionsComponent
-  alias Reddex.Users
+  alias Breddit.Users
 
   @post_params ~W(title id post_hint media_embed is_original_content is_self preview over_18 subreddit gildings approved_at_utc
   view_count clicked permalink category url score thumbnail subreddit_id num_comments thumbnail_width
@@ -13,7 +13,7 @@ defmodule PhantasmaWeb.SubmissionLive.Index do
   @impl true
   def mount(_params, %{"reddit_current_user" => %{name: username}}, socket) do
     if connected?(socket) do
-      {:ok, assign(socket, :submissions, list_submissions(socket.assigns.reddex, username))}
+      {:ok, assign(socket, :submissions, list_submissions(socket.assigns.reddit, username))}
     else
       {:ok, socket |> assign(submissions: [], loading: true)}
     end
@@ -47,7 +47,7 @@ defmodule PhantasmaWeb.SubmissionLive.Index do
   #   submission = Content.get_submission!(id)
   #   {:ok, _} = Content.delete_submission(submission)
 
-  #   {:noreply, assign(socket, :submissions, list_submissions(socket.assigns.reddex))}
+  #   {:noreply, assign(socket, :submissions, list_submissions(socket.assigns.reddit))}
   # end
 
   defp list_submissions(client, username) do

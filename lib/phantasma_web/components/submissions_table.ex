@@ -20,7 +20,7 @@ defmodule PhantasmaWeb.Components.SubmissionsTable do
             <td class="is-v-center" style="white-space: nowrap;">
               <h4 class="title is-4 has-text-primary-dark" title={"#{score} upvotes"}>
                 <ion-icon class="icon" name="arrow-up"></ion-icon>
-                <%= score |> Reddex.Helpers.format_upvotes %>
+                <%= score |> Breddit.Helpers.format_upvotes %>
               </h4>
             </td>
 

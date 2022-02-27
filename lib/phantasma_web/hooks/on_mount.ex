@@ -5,7 +5,7 @@ defmodule PhantasmaWeb.Hooks.OnMount do
   def on_mount(:default, _params, %{"reddit_access_token" => token} = session, socket) when not is_nil(token) do
 
     IO.inspect session
-    {:cont, socket |> assign_new(:reddex, fn -> Reddex.client(token: token) end)}
+    {:cont, socket |> assign_new(:reddit, fn -> Breddit.client(token: token) end)}
   end
 
   def on_mount(:default, params, _session, socket) do

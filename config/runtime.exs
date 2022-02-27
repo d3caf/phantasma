@@ -22,7 +22,7 @@ if config_env() == :prod do
 
   maybe_ipv6 = if System.get_env("ECTO_IPV6"), do: [:inet6], else: []
 
-  config :reddex,
+  config :reddit,
     oauth: [
       client_id: System.get_env("REDDIT_CLIENT_ID") || raise("Reddit client ID is not set!"),
       client_secret:

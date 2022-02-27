@@ -1,6 +1,6 @@
 defmodule PhantasmaWeb.Components.SubSearch do
   use Phoenix.LiveComponent
-  alias Reddex.Subreddits
+  alias Breddit.Subreddits
   alias Phoenix.LiveView.JS
 
   @impl true
@@ -38,7 +38,7 @@ defmodule PhantasmaWeb.Components.SubSearch do
   @impl true
   def handle_event("change", %{"value" => value}, socket) when not is_nil(value) and value != "" do
     {:ok, res} =
-      Subreddits.autocomplete(socket.assigns.reddex, value,
+      Subreddits.autocomplete(socket.assigns.reddit, value,
         limit: 10,
         typeahead_active: true,
         raw_json: 1

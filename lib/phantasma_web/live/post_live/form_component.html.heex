@@ -17,7 +17,7 @@
     <%= select f, :type, Ecto.Enum.values(Phantasma.Content.Post, :type), prompt: "Choose a value" %>
     <%= error_tag f, :type %>
 
-    <.live_component id="sub-search" module={SubSearch} reddex={@reddex} />
+    <.live_component id="sub-search" module={SubSearch} reddit={@reddit} />
 
     <div>
       <%= submit "Save", phx_disable_with: "Saving..." %>

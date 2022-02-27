@@ -45,8 +45,8 @@ defmodule PhantasmaWeb.AuthController do
     |> redirect(to: "/manage/posts")
   end
 
-  defp authorize_url!("reddit"), do: Reddex.authorize_url!()
-  defp get_token!("reddit", code), do: Reddex.get_token!(code: code)
+  defp authorize_url!("reddit"), do: Breddit.authorize_url!()
+  defp get_token!("reddit", code), do: Breddit.get_token!(code: code)
   defp get_user!("reddit", client) do
     %{body: user} = OAuth2.Client.get!(client, "api/v1/me")
     %{name: user["name"]}
