@@ -33,7 +33,6 @@ defmodule Phantasma.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:breddit, path: "~/c/breddit"},
       {:oauth2, "~> 2.0"},
       {:phoenix, "~> 1.6.6"},
       {:phoenix_ecto, "~> 4.4"},
@@ -51,7 +50,15 @@ defmodule Phantasma.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"}
-    ]
+    ] ++ dev_deps()
+  end
+
+  defp dev_deps() do
+    if Mix.env() == :dev do
+      [{:breddit, path: "~/c/breddit"}]
+    else
+      {:breddit, "~> 0.0.2"}
+    end
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
