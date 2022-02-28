@@ -43,3 +43,7 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+const menuToggle = document.querySelector('#nav-menu-toggle')
+const menuToggleTarget = document.querySelector('#main-nav-menu');
+const toggler = () => menuToggleTarget.classList.toggle('is-active');
+menuToggle.addEventListener('click', toggler);

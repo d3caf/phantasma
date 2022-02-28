@@ -20,7 +20,8 @@
   </head>
   <body>
     <header>
-      <PhantasmaWeb.Components.Navbar.render user={get_session(@conn, :reddit_current_user)} />
+      <% {:ok, vsn} = :application.get_key(:phantasma, :vsn) %>
+      <PhantasmaWeb.Components.Navbar.render user={get_session(@conn, :reddit_current_user)} version={vsn} />
     </header>
     <%= @inner_content %>
   </body>

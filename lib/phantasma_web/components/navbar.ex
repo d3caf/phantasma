@@ -6,18 +6,18 @@ defmodule PhantasmaWeb.Components.Navbar do
     ~H"""
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <span class="is-size-3-desktop" style="font-family: Calistoga">Phantasma</span>
+        <a class="navbar-item" style="align-items: unset;" href="/">
+          <span class="is-size-3-desktop" style="font-family: Calistoga">Phantasma <sup style="font-size: 0.35em;"><%= @version %></sup></span>
         </a>
 
-        <button class="navbar-burger" aria-label="menu" phx-click={JS.toggle(to: ".navbar-menu", in: "is-active")}>
+        <button id="nav-menu-toggle" class="navbar-burger" aria-label="menu">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </button>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="main-nav-menu" class="navbar-menu">
         <div class="navbar-start">
           <!--
           <a class="navbar-item">

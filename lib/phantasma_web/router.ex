@@ -26,7 +26,7 @@ defmodule PhantasmaWeb.Router do
 
   end
 
-  scope "/manage", PhantasmaWeb do
+  scope "/app", PhantasmaWeb do
     pipe_through [:browser, :authenticated]
 
     live_session :default, on_mount: PhantasmaWeb.Hooks.OnMount do

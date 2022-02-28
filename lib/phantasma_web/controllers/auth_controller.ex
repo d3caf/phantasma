@@ -42,7 +42,7 @@ defmodule PhantasmaWeb.AuthController do
     |> put_session(:reddit_current_user, user)
     |> put_session(:reddit_access_token, client.token.access_token)
     |> assign(:reddex_client, client)
-    |> redirect(to: "/manage/posts")
+    |> redirect(to: Helpers.post_index_path(conn, :index))
   end
 
   defp authorize_url!("reddit"), do: Breddit.authorize_url!()
